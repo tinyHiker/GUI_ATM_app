@@ -6,8 +6,65 @@ from PIL import ImageTk, Image
 master = Tk()
 master.title("Banking App")
 
+
+def login_session():
+    all_accounts= os.listdir()
+    login_name = temp_login_name.get()
+    login_password= temp_login_password.get()
+    
+    for name in all_accounts:
+        if login_name == name:
+            with open(name, 'r') as file:
+                file_data = file.read()
+                file_data = file_data.split('\n')
+                password= file_data[1]
+                
+                #Account Dashboard
+                if login_password == password:
+                    login_screen.destroy()
+                    account_dashboard = Toplevel(master)
+                    account_dashboard.title('Dashboard')
+                    
+                    #Labels
+                    Label(account_dashboard, text = "Account Dashboard", font=('Calibri', 12)).grid(row=0, sticky = N, pady =10) # TIMESTAMP: 32:37 VID 2
+                else:
+                    login_notif.config(fg='red', text='Invalid password')
+                    
+                return 
+        
+    login_notif.config(fg='red', text='Invalid username')
+    
+            
+            
+            
+            
+    
+
 def login():
-    print("This is a login page")
+    
+    global temp_login_name, temp_login_password, login_notif, login_screen
+    
+    
+    temp_login_name = StringVar()
+    temp_login_password = StringVar()
+    
+    #Login Screen
+    login_screen = Toplevel(master)
+    login_screen.title("Login")
+    
+    #Labels
+    Label(login_screen, text = "Login to your account", font = ('Calibri', 12)).grid(row=0, sticky=N, pady = 10 )
+    Label(login_screen, text = "Username", font = ('Calibri', 12)).grid(row=1, sticky=W, pady=10)
+    Label(login_screen, text = "Password", font = ('Calibri', 12)).grid(row=2, sticky=W, pady=10)
+    login_notif = Label(login_screen, text= '',  font = ('Calibri', 12))
+    login_notif.grid(row=4, sticky = N)
+    
+    #Entry
+    Entry(login_screen, textvariable=temp_login_name).grid(row=1, column=1, padx=5)
+    Entry(login_screen, textvariable=temp_login_password, show='*').grid(row=2, column=1, padx=5)
+    
+    #Button
+    Button(login_screen, text="Login", command = login_session, width=15, font = ('Calibri', 12)).grid(row=3, sticky=W, pady=5, padx=5)
 
 def finish_reg():
     print('done')
@@ -32,6 +89,7 @@ def finish_reg():
                 new_file.write(password + '\n')
                 new_file.write(age + '\n')
                 new_file.write(gender+ '\n')
+                new_file.write('0')
                 new_file.close()
                 notif.config(fg = 'green', text = "Account created succesfully")
     
