@@ -228,17 +228,7 @@ def deposit(user):
     deposit_screen = CTkToplevel(master)
     deposit_screen.title('Deposit')
     deposit_screen.geometry('500x500')
-    '''
-    account_dashboard.title('Dashboard')
-    account_dashboard.geometry('500x500')
-        
-    CTkLabel(account_dashboard, text = "Account Dashboard", font=('Georgia', 22)).place(x= 153, y= 30)
-    CTkLabel(account_dashboard, text = "Welcome " + user.name, font=('Georgia', 14)).place(x= 200, y= 75)
-                    
-    #Buttons
-    CTkButton(account_dashboard, text = "Personal Details", font = ('Georgia', 16), width = 40, height = 30, command = lambda: personal_details(user)).place(x= 185, y= 160)
-    CTkButton(account_dashboard, text = "Deposit", font = ('Georgia', 16), width = 40, height = 30, command = lambda: deposit(user)).place(x= 215,y = 250)
-    CTkButton(account_dashboard, text = "Withdraw", font = ('Georgia', 16), width = 40, height = 30, command = lambda: withdraw(user)).place(x= 207, y= 350)'''
+    
     
     #Label
     CTkLabel(deposit_screen, text = "Deposit", font = ('Georgia', 23)).place(x = 100, y = 100)
