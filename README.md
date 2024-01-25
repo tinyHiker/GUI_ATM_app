@@ -1,4 +1,4 @@
-#Tkinter Practice Dockerized ATM app
+# Tkinter Practice Dockerized ATM app
 Here I've bult a dockerized ATM app in python with a GUI. 
 Allows users to register, login, view personal detials, deposit, withdraw.
 
